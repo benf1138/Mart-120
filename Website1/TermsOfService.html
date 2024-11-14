@@ -8,8 +8,9 @@
             body {
                 background-color: teal;
             }
-            h1 {
+            h1, .user-info {
                 text-align: center;
+                color: black;
             }
             footer {
                 text-align: center;
@@ -18,6 +19,9 @@
         </style>
     </head>
     <body>
+        <div class="user-info">
+            <p id="userDetails"></p>
+        </div>
         <p>
             These are our terms of service. On Sundays you will watch football all day.
         </p>
@@ -31,6 +35,18 @@
                 No
             </button>
         </form>
-
+        <script>
+            function getQueryParams() {
+                const params = new URLSearchParams(window.location.search);
+                return {
+                    fname: params.get('fname') || '',
+                    lname: params.get('lname') || '',
+                    email: params.get('email') || ''
+                };
+            }
+            const userInfo = getQueryParams();
+            document.getElementById('userDetails').innerText = 
+                `Welcome, ${userInfo.fname} ${userInfo.lname} (${userInfo.email})`;
+        </script>
     </body>
 </html>

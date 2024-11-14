@@ -14,14 +14,55 @@
 
         </style>
         </head>
+        <script>
+            function checkboxes() {
+                
+                var FirstName = document.getElementById('fname');
+                var LastName = document.getElementById('lname');
+                var EmailAdd = document.getElementById('Email');
+
+                
+                var isValid = true;
+
+                
+                if (FirstName.value == "") {
+                    FirstName.style.border = "2px solid red";
+                    alert("Please enter first name");
+                    isValid = false;
+                } else {
+                    FirstName.style.border = ""; 
+                }
+
+                if (LastName.value == "") {
+                    LastName.style.border = "2px solid red";
+                    alert("Please enter last name");
+                    isValid = false;
+                } else {
+                    LastName.style.border = ""; 
+                }
+
+                if (EmailAdd.value == "") {
+                    EmailAdd.style.border = "2px solid red";
+                    alert("Please enter email address");
+                    isValid = false;
+                } else {
+                    EmailAdd.style.border = ""; 
+                }
+
+                
+                if (isValid) {
+                    document.getElementById("myForm").submit();
+                }
+            }
+        </script>
         <body>
             <h1>
                 Contact us
             </h1>
-            <form action="TermsOfService.html" type="POST">
-                First Name: <input type="text" id="fName"><br>
-                Last Name: <input type="text" id="lName"><br>
-                Email Address: <input type="text" id="Email"><br>
+            <form id="myForm" action="TermsOfService.html" method="GET" onsubmit="return checkboxes()">
+                First Name: <input type="text" id="fname" name="fname"><br>
+                Last Name: <input type="text" id="lname" name="lname"><br>
+                Email Address: <input type="text" id="Email" name="email"><br>
                 <button id="mySubmit" type="submit">Submit</button>
             </form>
         </body>
